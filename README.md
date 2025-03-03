@@ -15,3 +15,7 @@ I have tested it and everything, so I'm mostly confident that it works.
 The implementation is very similar copied from the one that is found in COMP4128, but I added a bunch of comments to understand what is happening
 
 I didn't test it, so please don't use it for your own uses.
+
+
+### Bellman Ford
+Coded it myself. Documentation can use a bit more work. Will update in future.
