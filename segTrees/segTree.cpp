@@ -1,21 +1,23 @@
 using namespace std;
 
-struct node {
+typedef struct {
     int sm;
-};
+} node;
 
-node tree[4 * 200005]; // sum range tree
+const int N = 200005;
+node tree[2 * N]; // sum range tree
 
 // fixes the current node at index (x)
 void fix_node(int x) {
     tree[x].sm = tree[2 * x].sm + tree[2 * x + 1].sm;
 }
 
-// x - current index we are at
-// l, r - the current range the current index represents
-// p - position to be updated
+// Update
+// p - position to be updated (1-indexed)
 // v - value to be updated to
-void update(int x, int l, int r, int p, int v) {
+// x - current index we are at
+// [l, r] - the current range the current index represents
+void update(int p, int v, int x=1, int l=1, int r=N) {
     // if we are at the leaf - we update the leaf
     if (l == r) {
         tree[x].sm = v;
@@ -26,8 +28,8 @@ void update(int x, int l, int r, int p, int v) {
     // update left / right child
     int mid = (l + r) / 2;
 
-    if (p <= mid) update(2 * x, l, mid, p, v);
-    else update(2 * x + 1, mid + 1, r, p, v);
+    if (p <= mid) update(p, v, 2 * x, l, mid);
+    else update(p, v, 2 * x + 1, mid + 1, r);
 
     // fix the current node
     fix_node(x);
@@ -35,9 +37,10 @@ void update(int x, int l, int r, int p, int v) {
 
 
 // sum query
-// [l, r] is the range of our node
-// [ql, qr] is the range we are querying
-int query(int x, int l, int r, int ql, int qr) {
+// [ql, qr] - is the range we are querying (1-indexed)
+// x - current index we are at
+// [l, r] - is the range of our node
+int sumQuery(int ql, int qr, int x=1, int l=1, int r=N) {
     // 1. the range we are querying is not intersecting
     // the current range of the node we are at
     if (ql > r || qr < l) {
@@ -51,8 +54,8 @@ int query(int x, int l, int r, int ql, int qr) {
 
     // 3. it partially intersects
     int mid = (l + r) / 2;
-    return query(2 * x, l, mid, ql, qr) +
-        query(2 * x + 1, mid + 1, r, ql, qr);
+    return sumQuery(ql, qr, 2 * x, l, mid) +
+        sumQuery(ql, qr, 2 * x + 1, mid + 1, r);
 }
 
 int main() {
