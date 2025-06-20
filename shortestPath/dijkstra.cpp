@@ -10,7 +10,7 @@ const int N = 100010;
 // Has 2 uses:
 //  - In adjacency lists, it's an edge from the current vertex to new vertex, in form {distance, new vertex}
 //  - In the min-heap, it represents a distance from a vertex v1 to a vertex v2 in the form {dist, v2}
-//    Note that we don't konw what v1 is, and there can be multiple v2 in the heap (although many will be discarded)
+//    Note that we don't know what v1 is, and there can be multiple v2 in the heap (although many will be discarded)
 typedef pair<int, int> edge;    // {dist, vertex}
 
 // Adjacency List

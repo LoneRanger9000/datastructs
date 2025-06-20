@@ -1,21 +1,22 @@
 ## Collection of data structures
 Just a bunch of data structures that I've coded myself/find interesting
 
-### Segment/Range Tree
-Most range trees I was found are inclusive-exclusive range tree (which I hated). Later on, I was shown a 1D inclusive-inclusive range tree a while back, and really liked it.
+### 1D Segment/Rage Tree
+Most range trees I was found are inclusive-exclusive range tree (which I hated). Later on, I was was informed of the existence of a 1D inclusive-inclusive range tree, which made a lot more sense.
 
-When I recently found out of the existance of a 2D range tree - where you can query any sub-square in a 2D array - I wanted to code an inclusive-inclusive version of it because I can't find any online. Queries I supported were sum, min, and max.
+This is my implementation of it. Note that it is untested, so use it at your discretion.
 
-It works basically by having a range tree inside of every single node of the range tree.
+### 2D Segment/Range Tree
+When I out that 2D range trees existed - ie. where you can query any sub-square in a 2D array in log^2(n) time - I wanted to code an inclusive-inclusive version of it because I can't find any online. Queries supported are sum, min, and max.
 
-I have tested it and everything, so I'm mostly confident that it works.
+Basic idea is that you have a segment tree for every row, and then another segment tree for every node of the outer segment tree. A full explanation can be found [here](https://cp-algorithms.com/data_structures/segment_tree.html#generalization-to-higher-dimensions).
 
+It is tested, so feel free to use it.
 
 ### Dijkstra's
-The implementation is very similar copied from the one that is found in COMP4128, but I added a bunch of comments to understand what is happening
+There are multiple possible implementations of Dijkstra's. I just used one which was easy to code, and added a bunch of comments to explain what is happening.
 
-I didn't test it, so please don't use it for your own uses.
-
+I didn't test it, so use it at your discretion.
 
 ### Bellman Ford
-Coded it myself. Documentation can use a bit more work. Will update in future.
+Coded from scratch. Documentation can use a bit more work. Might update in the future.
